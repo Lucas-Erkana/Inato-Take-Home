@@ -10,10 +10,13 @@ export class Pharmacy {
   constructor(drugs = []) {
     this.drugs = drugs;
   }
-  
+
   updateBenefitValue() {
     for (var i = 0; i < this.drugs.length; i++) {
-      if (this.drugs[i].name !== "Herbal Tea" && this.drugs[i].name !== "Fervex") {
+      if (
+        this.drugs[i].name !== "Herbal Tea" &&
+        this.drugs[i].name !== "Fervex"
+      ) {
         if (this.drugs[i].benefit > 0) {
           if (this.drugs[i].name !== "Magic Pill") {
             this.drugs[i].benefit = this.drugs[i].benefit - 1;
@@ -36,18 +39,18 @@ export class Pharmacy {
           }
         }
       }
-      
+
       // New condition for Dafalgan
       if (this.drugs[i].name === "Dafalgan") {
         if (this.drugs[i].benefit > 0) {
           this.drugs[i].benefit = this.drugs[i].benefit - 2;
         }
       }
-      
+
       if (this.drugs[i].name !== "Magic Pill") {
         this.drugs[i].expiresIn = this.drugs[i].expiresIn - 1;
       }
-      
+
       if (this.drugs[i].expiresIn < 0) {
         if (this.drugs[i].name !== "Herbal Tea") {
           if (this.drugs[i].name !== "Fervex") {
@@ -57,7 +60,8 @@ export class Pharmacy {
               }
             }
           } else {
-            this.drugs[i].benefit = this.drugs[i].benefit - this.drugs[i].benefit;
+            this.drugs[i].benefit =
+              this.drugs[i].benefit - this.drugs[i].benefit;
           }
         } else {
           if (this.drugs[i].benefit < 50) {
@@ -66,7 +70,7 @@ export class Pharmacy {
         }
       }
     }
-    
+
     return this.drugs;
   }
 }
